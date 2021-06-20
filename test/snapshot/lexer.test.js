@@ -16,6 +16,25 @@ describe("Test lexer", function () {
       expect(parser.parseCode("<?= $a ?>")).toMatchSnapshot();
     });
 
+    it("parse open close with comments", () => {
+      expect(
+        parser.parseCode(
+          `<?php //FOO
+\t\t\t\t\techo "foo";?>
+\t\t\t\t\t
+        <?php //BAR
+        echo "bar";?>
+        `,
+          {
+            parser: {
+              extractDoc: true,
+              debug: false,
+            },
+          }
+        )
+      ).toMatchSnapshot();
+    });
+
     it("#263 - expect inline", function () {
       expect(parser.parseCode("<?php$a ?>")).toMatchSnapshot();
     });

@@ -54,6 +54,85 @@ Program {
 }
 `;
 
+exports[`Test lexer initial state parse open close with comments 1`] = `
+Program {
+  "children": Array [
+    Echo {
+      "expressions": Array [
+        String {
+          "isDoubleQuote": true,
+          "kind": "string",
+          "raw": "\\"foo\\"",
+          "unicode": false,
+          "value": "foo",
+        },
+      ],
+      "kind": "echo",
+      "leadingComments": Array [
+        CommentLine {
+          "kind": "commentline",
+          "offset": 6,
+          "value": "//FOO
+",
+        },
+      ],
+      "shortForm": false,
+    },
+    Inline {
+      "kind": "inline",
+      "raw": "
+					
+        ",
+      "value": "					
+        ",
+    },
+    Echo {
+      "expressions": Array [
+        String {
+          "isDoubleQuote": true,
+          "kind": "string",
+          "raw": "\\"bar\\"",
+          "unicode": false,
+          "value": "bar",
+        },
+      ],
+      "kind": "echo",
+      "leadingComments": Array [
+        CommentLine {
+          "kind": "commentline",
+          "offset": 51,
+          "value": "//BAR
+",
+        },
+      ],
+      "shortForm": false,
+    },
+    Inline {
+      "kind": "inline",
+      "raw": "
+        ",
+      "value": "        ",
+    },
+  ],
+  "comments": Array [
+    CommentLine {
+      "kind": "commentline",
+      "offset": 6,
+      "value": "//FOO
+",
+    },
+    CommentLine {
+      "kind": "commentline",
+      "offset": 51,
+      "value": "//BAR
+",
+    },
+  ],
+  "errors": Array [],
+  "kind": "program",
+}
+`;
+
 exports[`Test lexer initial state parse short echo 1`] = `
 Program {
   "children": Array [
